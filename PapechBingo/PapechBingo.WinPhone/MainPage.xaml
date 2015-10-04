@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="PapechBingo.WinPhone.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PapechBingo.WinPhone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Grid>
+        <TextBlock
+            x:Name="applicationTitle"
+            Text="PAPECH BINGO"
+            Margin="10,0,0,0"
+            Style="{StaticResource SubheaderTextBlockStyle}"/>
+        <Grid
+            x:Name="topButtonsGrid"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top"
+            Margin="0, 50, 0, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!-- TODO: obtain content from Resources -->
+            <Button
+                x:Name="buttonReset"
+                Content="Reset"
+                HorizontalAlignment="Stretch"
+                Grid.Column="0"
+                Margin="20,0,10,0"/>
+            <Button
+                x:Name="buttonInfo"
+                Content="Info"
+                HorizontalAlignment="Stretch"
+                Grid.Column="1"
+                Margin="10,0,20,0"/>
+        </Grid>
+
+        <Grid
+            x:Name="mainButtonsGrid"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Bottom"
+            Margin="0, 0, 0, 0" />
+
+    </Grid>
+</Page>

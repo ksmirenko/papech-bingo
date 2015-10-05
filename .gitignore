@@ -110,6 +110,7 @@ AppPackages/
 !*.[Cc]ache/
 
 # Others
+BundleArtifacts/
 ClientBin/
 [Ss]tyle[Cc]op.*
 ~$*
@@ -120,3 +121,6 @@ ClientBin/
 *.publishsettings
 node_modules/
 orleans.codegen.cs
+
+# Exclude BuiltPackages folder
+!Packages/*

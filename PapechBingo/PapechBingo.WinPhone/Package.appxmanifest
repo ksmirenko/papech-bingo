@@ -16,9 +16,12 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Native.Shared.Template.WinPhone.App">
-      <m3:VisualElements DisplayName="Native.Shared.Template.WinPhone" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="Native.Shared.Template.WinPhone" ForegroundText="light" BackgroundColor="transparent">
+      <m3:VisualElements DisplayName="Papech Bingo" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="An app for playing Bingo when watching EvilArthas (Hailrake) game streams." ForegroundText="light" BackgroundColor="transparent">
         <m3:DefaultTile Square71x71Logo="Assets\Square71x71Logo.png">
         </m3:DefaultTile>
+        <m3:InitialRotationPreference>
+          <m3:Rotation Preference="portrait" />
+        </m3:InitialRotationPreference>
       </m3:VisualElements>
     </Application>
   </Applications>

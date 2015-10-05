@@ -10,13 +10,15 @@
 
 
     <Grid>
+        <Image
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Source="Assets/background.jpg"/>
         <TextBlock
-            x:Name="applicationTitle"
             x:Uid="ApplicationTitle"
             Margin="10,0,0,0"
             Style="{StaticResource SubheaderTextBlockStyle}"/>
         <Grid
-            x:Name="topButtonsGrid"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Top"
             Margin="0, 50, 0, 0">
@@ -24,16 +26,13 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <!-- TODO: obtain content from Resources -->
             <Button
-                x:Name="buttonReset"
                 x:Uid="ButtonReset"
                 HorizontalAlignment="Stretch"
                 Grid.Column="0"
                 Margin="20,0,10,0"
                 Click="buttonReset_Click"/>
             <Button
-                x:Name="buttonInfo"
                 x:Uid="ButtonInfo"
                 HorizontalAlignment="Stretch"
                 Grid.Column="1"
@@ -42,7 +41,7 @@
         </Grid>
 
         <Grid
-            x:Name="mainButtonsGrid"
+            x:Name="MainButtonsGrid"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Bottom"
             Margin="0, 0, 0, 10" />

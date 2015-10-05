@@ -7,6 +7,7 @@ using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
+using Windows.Storage;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -23,30 +24,28 @@ namespace PapechBingo.WinPhone {
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class MainPage : Page {
+        private string GRID_STATE_SETTING_NAME = "GridState";
         private ToggleButton[] mainButtons;
         private ResourceLoader resLoader = new ResourceLoader();
+        private ApplicationDataContainer settings = ApplicationData.Current.LocalSettings;
 
         public MainPage() {
             this.InitializeComponent();
-
             this.NavigationCacheMode = NavigationCacheMode.Required;
-
             SetupButtonGrid();
         }
-
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
+        
         protected override void OnNavigatedTo(NavigationEventArgs e) {
-            // TODO: Prepare page for display here.
-
-            // TODO: If your application contains multiple pages, ensure that you are
-            // handling the hardware Back button by registering for the
-            // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
-            // If you are using the NavigationHelper provided by some templates,
-            // this event is handled for you.
+            object gridState = settings.Values[GRID_STATE_SETTING_NAME];
+            if (gridState != null) {
+                GridLogic.Instance.FillData((string)gridState);
+            }
+            else {
+                GridLogic.Instance.Reset();
+            }
+        }
+        protected override void OnNavigatedFrom(NavigationEventArgs e) {
+            settings.Values[GRID_STATE_SETTING_NAME] = GridLogic.Instance.ExtractData();
         }
 
         private void SetupButtonGrid() {
@@ -65,7 +64,7 @@ namespace PapechBingo.WinPhone {
                 rowDef.Height = new GridLength(1, GridUnitType.Star);
                 mainButtonsGrid.RowDefinitions.Add(rowDef);
             }
-            // obtaining buttons content
+            // obtaining buttons content - a shameful workaround
             var buttonStrings = resLoader.GetString("MainButtonsContent").Split(';');
             // creating and adding buttons
             mainButtons = new ToggleButton[gridSize * gridSize];

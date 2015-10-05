@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace PapechBingo {
     public class GridLogic {
@@ -51,17 +52,17 @@ namespace PapechBingo {
                 for (var j = 0; j < GRID_SIZE; ++j)
                     grid[i, j] = false;
         }
-        public void FillData(bool[] data) {
+        public void FillData(string data) {
             for (var i = 0; i < GRID_SIZE; ++i)
                 for (var j = 0; j < GRID_SIZE; ++j)
-                    grid[i, j] = data[GRID_SIZE * i + j];
+                    grid[i, j] = data[GRID_SIZE * i + j] == '1';
         }
-        public bool[] ExtractData() {
-            var outData = new bool[GRID_SIZE * GRID_SIZE];
+        public string ExtractData() {
+            var outData = new StringBuilder();
             for (var i = 0; i < GRID_SIZE; ++i)
                 for (var j = 0; j < GRID_SIZE; ++j)
-                    outData[GRID_SIZE * i + j] = grid[i, j];
-            return outData; 
+                    outData.Append(grid[i, j] ? '1' : '0');
+            return outData.ToString();
         }
     }
 }

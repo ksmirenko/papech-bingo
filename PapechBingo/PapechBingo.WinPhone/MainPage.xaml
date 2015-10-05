@@ -12,7 +12,7 @@
     <Grid>
         <TextBlock
             x:Name="applicationTitle"
-            Text="PAPECH BINGO"
+            x:Uid="ApplicationTitle"
             Margin="10,0,0,0"
             Style="{StaticResource SubheaderTextBlockStyle}"/>
         <Grid
@@ -27,23 +27,25 @@
             <!-- TODO: obtain content from Resources -->
             <Button
                 x:Name="buttonReset"
-                Content="Reset"
+                x:Uid="ButtonReset"
                 HorizontalAlignment="Stretch"
                 Grid.Column="0"
-                Margin="20,0,10,0"/>
+                Margin="20,0,10,0"
+                Click="buttonReset_Click"/>
             <Button
                 x:Name="buttonInfo"
-                Content="Info"
+                x:Uid="ButtonInfo"
                 HorizontalAlignment="Stretch"
                 Grid.Column="1"
-                Margin="10,0,20,0"/>
+                Margin="10,0,20,0"
+                Click="buttonInfo_Click"/>
         </Grid>
 
         <Grid
             x:Name="mainButtonsGrid"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Bottom"
-            Margin="0, 0, 0, 0" />
+            Margin="0, 0, 0, 10" />
 
     </Grid>
 </Page>

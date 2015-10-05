@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,6 +24,8 @@ namespace PapechBingo.WinPhone {
     /// </summary>
     public sealed partial class MainPage : Page {
         private ToggleButton[] mainButtons;
+        private ResourceLoader resLoader = new ResourceLoader();
+
         public MainPage() {
             this.InitializeComponent();
 
@@ -49,7 +53,7 @@ namespace PapechBingo.WinPhone {
             var gridSize = GridLogic.GRID_SIZE;
             // calculating button height
             var scaleFactor = DisplayInformation.GetForCurrentView().RawPixelsPerViewPixel;
-            var buttonHeight = Window.Current.Bounds.Width * scaleFactor / gridSize;
+            var buttonSize = Window.Current.Bounds.Width * scaleFactor / gridSize;
             // setting up rows and columns
             for (var i = 0; i < gridSize; i++) {
                 var colDef = new ColumnDefinition();
@@ -61,24 +65,56 @@ namespace PapechBingo.WinPhone {
                 rowDef.Height = new GridLength(1, GridUnitType.Star);
                 mainButtonsGrid.RowDefinitions.Add(rowDef);
             }
+            // obtaining buttons content
+            var buttonStrings = resLoader.GetString("MainButtonsContent").Split(';');
             // creating and adding buttons
             mainButtons = new ToggleButton[gridSize * gridSize];
             for (var i = 0; i < gridSize; i++) {
                 for (var j = 0; j < gridSize; j++) {
+                    var bIndex = i * gridSize + j;
                     var b = new ToggleButton();
                     b.HorizontalAlignment = HorizontalAlignment.Stretch;
                     b.VerticalAlignment = VerticalAlignment.Stretch;
-                    b.Height = buttonHeight;
-                    //b.Width = buttonHeight;
+                    b.Height = buttonSize;
+                    b.Width = buttonSize;
                     b.SetValue(Grid.RowProperty, i);
                     b.SetValue(Grid.ColumnProperty, j);
                     b.Padding = new Thickness(0);
                     b.Margin = new Thickness(0, -11, 0, -11);
-                    // TODO: obtain content from Resources
-                    b.Content = "STUB";
-                    mainButtons[i * gridSize + j] = b;
+                    // setting button content
+                    var textBlock = new TextBlock();
+                    textBlock.TextWrapping = TextWrapping.Wrap;
+                    textBlock.FontSize = 12;
+                    textBlock.FontStretch = Windows.UI.Text.FontStretch.ExtraCondensed;
+                    textBlock.Text = buttonStrings[bIndex];
+                    b.HorizontalContentAlignment = HorizontalAlignment.Left;
+                    b.Padding = new Thickness(4, 1, 1, 1);
+                    b.Content = textBlock;
+                    // adding OnClickListener
+                    b.Tag = bIndex;
+                    b.Click += mainButton_Click;
+                    // saving the button and adding to grid
+                    mainButtons[bIndex] = b;
                     mainButtonsGrid.Children.Add(b);
                 }
+            }
+        }
+
+        private void buttonReset_Click(object sender, RoutedEventArgs e) {
+            for (var i = 0; i < GridLogic.GRID_SIZE * GridLogic.GRID_SIZE; i++) {
+                mainButtons[i].IsChecked = false;
+            }
+            GridLogic.Instance.Reset();
+        }
+        private async void buttonInfo_Click(object sender, RoutedEventArgs e) {
+            MessageDialog msgbox = new MessageDialog(resLoader.GetString("InfoMessage"));
+            await msgbox.ShowAsync();
+        }
+        private async void mainButton_Click(object sender, RoutedEventArgs e) {
+            var buttonIndex = (int)((ToggleButton)sender).Tag;
+            if (GridLogic.Instance.ToggleButton(buttonIndex)) {
+                MessageDialog msgbox = new MessageDialog(resLoader.GetString("BingoMessage"));
+                await msgbox.ShowAsync();
             }
         }
     }

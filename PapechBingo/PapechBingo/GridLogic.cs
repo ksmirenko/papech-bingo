@@ -3,8 +3,11 @@
 namespace PapechBingo {
     public class GridLogic {
         public const int GRID_SIZE = 5;
-        public static GridLogic instance = new GridLogic();
-        
+        public static GridLogic Instance {
+            get { return instance; }
+        }
+
+        private static GridLogic instance = new GridLogic();
         private bool[,] grid;
 
         private GridLogic() {
@@ -12,7 +15,10 @@ namespace PapechBingo {
             Reset();
         }
 
-        public Tuple<bool, bool> ToggleButton(int x, int y) {
+        public bool ToggleButton(int index) {
+            return ToggleButton(index / GRID_SIZE, index % GRID_SIZE);
+        }
+        public bool ToggleButton(int x, int y) {
             // toggling cell state
             grid[x, y] = !grid[x, y];
             var bingo = false;
@@ -38,21 +44,18 @@ namespace PapechBingo {
                 }
                 bingo = bingoRow || bingoColumn || bingoDiag1 || bingoDiag2;
             }
-            return Tuple.Create<bool, bool>(grid[x, y], bingo);
+            return bingo;
         }
-
         public void Reset() {
             for (var i = 0; i < GRID_SIZE; ++i)
                 for (var j = 0; j < GRID_SIZE; ++j)
                     grid[i, j] = false;
         }
-
         public void FillData(bool[] data) {
             for (var i = 0; i < GRID_SIZE; ++i)
                 for (var j = 0; j < GRID_SIZE; ++j)
                     grid[i, j] = data[GRID_SIZE * i + j];
         }
-
         public bool[] ExtractData() {
             var outData = new bool[GRID_SIZE * GRID_SIZE];
             for (var i = 0; i < GRID_SIZE; ++i)

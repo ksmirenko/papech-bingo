@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Папеч Бинго</string>
+    <string name="bingo_message">ПАПЕЧ БИНГО! Теперь можете закрывать стрим.</string>
+    <string name="button_info_content">Инфа</string>
+    <string name="button_reset_content">Сброс</string>
+    <string name="info_message">Кликайте по фразам, когда Артас говорит их. Когда соберёте линию из пяти, кричите \"Папеч бинго!\"</string>
+    <string-array name="main_buttons_content">
+        <item>супер\nошибка</item>
+        <item>ноль\nпомощи</item>
+        <item>команда\nмусор</item>
+        <item>НААААЙС</item>
+        <item>ЛЁГКОСТЬ\nБЫТИЯ!</item>
+        <item>гыгы</item>
+        <item>добрый\nпочанток</item>
+        <item>макси-\nмально\nплохо</item>
+        <item>луз до\nкрипов</item>
+        <item>В\nСОЛЯНОГО!</item>
+        <item>(рубик в\nкоманде)</item>
+        <item>*тук тук\nтук*</item>
+        <item>(взял\nбаунти\nруну)</item>
+        <item>ХАХАХА</item>
+        <item>НННААА!</item>
+        <item>команда\nафк</item>
+        <item>Габен</item>
+        <item>МОЁ.</item>
+        <item>минус\nмораль</item>
+        <item>(пере-\nдразнил\nгероя)</item>
+        <item>а, я умер</item>
+        <item>я ничего\nне мог\nсделать</item>
+        <item>проверяй</item>
+        <item>короче, мы\nпроиграли</item>
+        <item>ААААААА\nААААААА\nААААААА</item>
+    </string-array>
+</resources>

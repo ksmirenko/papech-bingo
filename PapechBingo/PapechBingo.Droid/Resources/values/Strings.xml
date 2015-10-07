@@ -1,5 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="hello">Hello World, Click Me!</string>
-	<string name="app_name">PapechBingo.Droid</string>
+    <string name="app_name">Papech Bingo</string>
+    <string name="bingo_message">PAPECH BINGO! Now you may close the stream.</string>
+    <string name="button_info_content">Info</string>
+    <string name="button_reset_content">Reset</string>
+    <string name="info_message">Click on phrases when Arthas says them. If you got a line of 5, yell \"Papech Bingo!\"\n\n\nWarning: Arthas streams in Russian, so if you don\'t speak it, it might not be as fun. The phrases are provided in transliteration.</string>
+    <string-array name="main_buttons_content">
+        <item>super\noshibka</item>
+        <item>nol\npomoshi</item>
+        <item>komanda\nmusor</item>
+        <item>NIIIICE!</item>
+        <item>LYOGKOST\nBYTIYA!</item>
+        <item>GG</item>
+        <item>dobry\npochantok</item>
+        <item>maximalno\nploho</item>
+        <item>luz do\nkripov</item>
+        <item>V SOLYA-\nNOGO!</item>
+        <item>(rubick\nin team)</item>
+        <item>*knock\nknock*</item>
+        <item>(took\nbounty\nrune)</item>
+        <item>HAHAHA</item>
+        <item>NNNAAA!</item>
+        <item>komanda\nafk</item>
+        <item>Gaben</item>
+        <item>MOYO.</item>
+        <item>minus\nmorale</item>
+        <item>(mimics\nhero)</item>
+        <item>a, ya umer</item>
+        <item>ya nichego\nne mog\nsdelat</item>
+        <item>proveryai</item>
+        <item>koroche,\nmy\nproigrali</item>
+        <item>AAAAAAA\nAAAAAAA\nAAAAAAA</item>
+    </string-array>
 </resources>

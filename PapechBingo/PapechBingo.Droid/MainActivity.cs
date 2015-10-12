@@ -34,29 +34,30 @@ namespace PapechBingo.Droid {
                 Resources.GetStringArray(Resource.Array.main_buttons_content);
             var gridLayout = FindViewById<LinearLayout>(Resource.Id.MainButtonsGrid);
             _mainButtons = new CrossingButton[gridSize * gridSize];
-            var buttonSize = (int)((Resources.DisplayMetrics.WidthPixels) / Resources.DisplayMetrics.Density);
+            var buttonSize = (int)((Resources.DisplayMetrics.WidthPixels) / Resources.DisplayMetrics.Density / gridSize);
             for (var i = 0; i < gridSize; i++) {
                 var row = new LinearLayout(ApplicationContext) {
                     LayoutParameters =
-                        new LinearLayout.LayoutParams(
-                            ViewGroup.LayoutParams.MatchParent,
-                            ViewGroup.LayoutParams.WrapContent, 1.0f),
+                        new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, 0, 1.0f),
                     WeightSum = 5.0f
                 };
                 for (var j = 0; j < gridSize; j++) {
                     var bIndex = i * gridSize + j;
                     var b = new CrossingButton(ApplicationContext) {
+                        LayoutParameters =
+                            new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MatchParent, 1.0f),
                         Text = strings[bIndex],
                         Tag = bIndex
                     };
                     b.Click += (sender, args) => {
-                        var buttonIndex = (int) ((CrossingButton) sender).Tag;
+                        var buttonIndex = (int)((CrossingButton)sender).Tag;
                         if (!GridLogic.Instance.ToggleButton(buttonIndex))
                             return;
                         ShowAlertMessage(
                             Resources.GetString(Resource.String.bingo_message));
                     };
-                    b.SetHeight(buttonSize);
+                    b.SetMaxHeight(buttonSize);
+                    b.SetMinHeight(buttonSize);
                     _mainButtons[bIndex] = b;
                     row.AddView(b);
                 }

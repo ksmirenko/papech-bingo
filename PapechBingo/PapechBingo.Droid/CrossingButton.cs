@@ -2,7 +2,6 @@ using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.Util;
-using Android.Views;
 using Android.Widget;
 
 namespace PapechBingo.Droid {
@@ -12,12 +11,10 @@ namespace PapechBingo.Droid {
         private bool _state;
         
         public CrossingButton(Context context) : base(context) {
-            LayoutParameters =
-                new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WrapContent,
-                    ViewGroup.LayoutParams.WrapContent, 1.0f);
             SetTextColor(Color.Black);
-            SetTextSize(ComplexUnitType.Dip, 12);
+            SetTextSize(ComplexUnitType.Dip, 14);
+            SetIncludeFontPadding(false);
+            SetPadding(0, 0, 0, 0);
             Click += (sender, args) => {
                 _state = !_state;
                 UpdateBackground();

@@ -1,13 +1,14 @@
 ﻿using System;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.Views;
 using Android.OS;
 using Android.Widget;
 
 namespace PapechBingo.Droid {
     [Activity(Label = "PapechBingo", MainLauncher = true,
-        Icon = "@drawable/ic_launcher")]
+        Icon = "@drawable/ic_launcher", ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : Activity {
         private const string PreferencesName = "AppPrefs";
         private const string GridStatePreferenceName = "GridState";

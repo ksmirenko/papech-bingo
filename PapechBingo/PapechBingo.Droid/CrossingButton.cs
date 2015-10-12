@@ -12,7 +12,7 @@ namespace PapechBingo.Droid {
         
         public CrossingButton(Context context) : base(context) {
             SetTextColor(Color.Black);
-            SetTextSize(ComplexUnitType.Dip, 14);
+            SetTextSize(ComplexUnitType.Sp, 14);
             SetIncludeFontPadding(false);
             SetPadding(0, 0, 0, 0);
             Click += (sender, args) => {

@@ -30,7 +30,9 @@
         android:id="@+id/MainButtonsGrid"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:gravity="bottom"
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"
-        android:orientation="vertical" />
+        android:orientation="vertical"
+        android:weightSum="5" />
 </RelativeLayout>

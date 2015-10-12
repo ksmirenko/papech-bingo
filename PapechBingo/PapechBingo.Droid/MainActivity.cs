@@ -1,22 +1,16 @@
 ﻿using System;
-using System.IO;
-using System.Xml;
 using Android.App;
 using Android.Content;
-using Android.Content.Res;
-using Android.Graphics;
-using Android.Graphics.Drawables;
 using Android.Views;
 using Android.OS;
-using Android.Provider;
 using Android.Widget;
 
 namespace PapechBingo.Droid {
     [Activity(Label = "PapechBingo", MainLauncher = true,
         Icon = "@drawable/ic_launcher")]
     public class MainActivity : Activity {
-        private const string GridStateSettingName = "GridState";
-        private ToggleButton[] _mainButtons;
+        //private const string GridStateSettingName = "GridState";
+        private CrossingButton[] _mainButtons;
 
         protected override void OnCreate(Bundle bundle) {
             base.OnCreate(bundle);
@@ -39,35 +33,30 @@ namespace PapechBingo.Droid {
             var strings =
                 Resources.GetStringArray(Resource.Array.main_buttons_content);
             var gridLayout = FindViewById<LinearLayout>(Resource.Id.MainButtonsGrid);
-            _mainButtons = new ToggleButton[gridSize * gridSize];
+            _mainButtons = new CrossingButton[gridSize * gridSize];
+            var buttonSize = (int)((Resources.DisplayMetrics.WidthPixels) / Resources.DisplayMetrics.Density);
             for (var i = 0; i < gridSize; i++) {
                 var row = new LinearLayout(ApplicationContext) {
                     LayoutParameters =
                         new LinearLayout.LayoutParams(
                             ViewGroup.LayoutParams.MatchParent,
-                            ViewGroup.LayoutParams.WrapContent),
+                            ViewGroup.LayoutParams.WrapContent, 1.0f),
                     WeightSum = 5.0f
                 };
                 for (var j = 0; j < gridSize; j++) {
                     var bIndex = i * gridSize + j;
-                    var b = new ToggleButton(ApplicationContext) {
-                        LayoutParameters =
-                            new LinearLayout.LayoutParams(
-                                ViewGroup.LayoutParams.MatchParent,
-                                ViewGroup.LayoutParams.WrapContent, 1.0f),
-                        Background = Resources.GetDrawable(Resource.Drawable.crossed_button),
-                        //TextColors = ColorStateList.CreateFromXml(Resources, XmlReader.Create(StreamReader))
-                        TextOn = strings[bIndex],
-                        TextOff = strings[bIndex],
+                    var b = new CrossingButton(ApplicationContext) {
+                        Text = strings[bIndex],
                         Tag = bIndex
                     };
                     b.Click += (sender, args) => {
-                        var buttonIndex = (int) ((ToggleButton) sender).Tag;
+                        var buttonIndex = (int) ((CrossingButton) sender).Tag;
                         if (!GridLogic.Instance.ToggleButton(buttonIndex))
                             return;
                         ShowAlertMessage(
                             Resources.GetString(Resource.String.bingo_message));
                     };
+                    b.SetHeight(buttonSize);
                     _mainButtons[bIndex] = b;
                     row.AddView(b);
                 }

@@ -123,4 +123,4 @@ node_modules/
 orleans.codegen.cs
 
 # Exclude BuiltPackages folder
-!Packages/*
+!BuiltPackages/*

@@ -57,6 +57,22 @@ namespace PapechBingo.Droid
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f060000
+			public const int toggle_colors = 2131099648;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
@@ -64,7 +80,19 @@ namespace PapechBingo.Droid
 			public const int background = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int ic_launcher = 2130837505;
+			public const int crossed_button_off = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int crossed_button_on = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int ic_launcher = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int toggle_selector = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public const int togglebutton_main = 2130837509;
 			
 			static Drawable()
 			{
@@ -79,14 +107,14 @@ namespace PapechBingo.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060001
-			public const int ButtonInfo = 2131099649;
+			// aapt resource value: 0x7f070001
+			public const int ButtonInfo = 2131165185;
 			
-			// aapt resource value: 0x7f060000
-			public const int ButtonReset = 2131099648;
+			// aapt resource value: 0x7f070000
+			public const int ButtonReset = 2131165184;
 			
-			// aapt resource value: 0x7f060002
-			public const int MainButtonsGrid = 2131099650;
+			// aapt resource value: 0x7f070002
+			public const int MainButtonsGrid = 2131165186;
 			
 			static Id()
 			{

@@ -67,9 +67,23 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-mdpi\background.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\toggle_selector.xml" />
+  </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values-ru\Strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\crossed_button_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\crossed_button_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\color\toggle_colors.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\togglebutton_main.xml" />
   </ItemGroup>
   <Import Project="..\PapechBingo\PapechBingo.projitems" Label="Shared" Condition="Exists('..\PapechBingo\PapechBingo.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
